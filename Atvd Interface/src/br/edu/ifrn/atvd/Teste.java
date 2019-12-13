@@ -5,6 +5,8 @@
  */
 package br.edu.ifrn.atvd;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 20181114010040
@@ -30,7 +32,7 @@ public class Teste extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtaQuadroMens = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -50,9 +52,9 @@ public class Teste extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jtaQuadroMens.setColumns(20);
+        jtaQuadroMens.setRows(5);
+        jScrollPane1.setViewportView(jtaQuadroMens);
 
         jPanel2.setBackground(new java.awt.Color(120, 211, 235));
 
@@ -88,16 +90,16 @@ public class Teste extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Selecione um veículo:");
 
+        buttonGroup1.add(jrbCarro);
         jrbCarro.setText("Carro");
-        jrbCarro.setEnabled(false);
         jrbCarro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbCarroActionPerformed(evt);
             }
         });
 
+        buttonGroup1.add(jrbMoto);
         jrbMoto.setText("Moto");
-        jrbMoto.setEnabled(false);
         jrbMoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbMotoActionPerformed(evt);
@@ -114,23 +116,24 @@ public class Teste extends javax.swing.JFrame {
 
         jrbAbastecer.setBackground(new java.awt.Color(173, 221, 227));
         jrbAbastecer.setText("Abastecer");
+        jrbAbastecer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbAbastecerActionPerformed(evt);
+            }
+        });
 
         jrbConsultarTanque.setBackground(new java.awt.Color(176, 218, 231));
         jrbConsultarTanque.setText("Consultar Tanque");
+        jrbConsultarTanque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbConsultarTanqueActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jrbCarro)
-                        .addGap(18, 18, 18)
-                        .addComponent(jrbMoto)))
-                .addGap(177, 177, 177))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -149,18 +152,30 @@ public class Teste extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jtfTanque))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jrbAndar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jrbAbastecer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jrbConsultarTanque))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(85, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(100, 100, 100))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jrbCarro)
+                                .addGap(18, 18, 18)
+                                .addComponent(jrbMoto)))
+                        .addGap(177, 177, 177))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jrbAndar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jrbAbastecer)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jrbConsultarTanque)))
+                        .addGap(80, 80, 80))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,28 +225,128 @@ public class Teste extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jrbCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCarroActionPerformed
-       if(jrbCarro.isSelected()){
-           jrbAndar.setEnabled(true);
-           jrbAbastecer.setEnabled(true);
-           jrbConsultarTanque.setEnabled(true);
-       }
+        if (jrbCarro.isSelected()) {
+            jrbAndar.setEnabled(true);
+            jrbAbastecer.setEnabled(true);
+            jrbConsultarTanque.setEnabled(true);
+        }
     }//GEN-LAST:event_jrbCarroActionPerformed
 
     private void jrbMotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMotoActionPerformed
-        if(jrbMoto.isSelected()){
-           jrbAndar.setEnabled(true);
-           jrbAbastecer.setEnabled(true);
-           jrbConsultarTanque.setEnabled(true);
-       }
+        if (jrbMoto.isSelected()) {
+            jrbAndar.setEnabled(true);
+            jrbAbastecer.setEnabled(true);
+            jrbConsultarTanque.setEnabled(true);
+        }
     }//GEN-LAST:event_jrbMotoActionPerformed
 
     private void jrbAndarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbAndarActionPerformed
-        if(jrbAndar.isSelected()){
-            if(carro == null){
-                carro = new Carro(Integer.parseInt(jtfConsumo.getText()),Integer.parseInt(jtfCapacidade.getText()), 0);
+        if (jrbCarro.isSelected()) {
+            if (carro == null) {
+
+                
+                int consumo = Integer.parseInt(jtfConsumo.getText());
+                int capacidade = Integer.parseInt(jtfCapacidade.getText());
+
+                carro = new Carro(consumo, capacidade, 0);
+            }
+            
+            String distancia = JOptionPane.showInputDialog(this, "Digite a distância que você quer andar:");
+            
+            if (distancia != null) {
+                int dist = Integer.parseInt(distancia);
+
+                jtaQuadroMens.append("\n" + carro.andar(dist));
+
+            }
+        }
+
+        if (jrbMoto.isSelected()) {
+            if (moto == null) {
+                int consumo = Integer.parseInt(jtfConsumo.getText());
+                int capacidade = Integer.parseInt(jtfCapacidade.getText());
+
+                moto = new Moto(consumo, capacidade, 0);
+            }
+            
+            String distancia = JOptionPane.showInputDialog(this, "Digite a distância que você quer andar:");
+            
+            if (distancia != null) {
+                int dist = Integer.parseInt(distancia);
+
+                jtaQuadroMens.append("\n" + moto.andar(dist));
             }
         }
     }//GEN-LAST:event_jrbAndarActionPerformed
+
+    private void jrbAbastecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbAbastecerActionPerformed
+
+        if (jrbCarro.isSelected()) {
+            if (carro == null) {
+
+                int tanque = Integer.parseInt(jtfTanque.getText());
+                int consumo = Integer.parseInt(jtfConsumo.getText());
+                int capacidade = Integer.parseInt(jtfCapacidade.getText());
+
+                carro = new Carro(consumo, capacidade, tanque);
+            }
+
+            String litros = JOptionPane.showInputDialog(this, "Digite quantos litros você quer abastecer:");
+
+            int lit = Integer.parseInt(litros);
+
+            jtaQuadroMens.append("\n" + carro.abastecer(lit));
+        }
+
+        if (jrbMoto.isSelected()) {
+            if (moto == null) {
+
+                int tanque = Integer.parseInt(jtfTanque.getText());
+                int consumo = Integer.parseInt(jtfConsumo.getText());
+                int capacidade = Integer.parseInt(jtfCapacidade.getText());
+
+                moto = new Moto(consumo, capacidade, tanque);
+
+            }
+
+            String litros = JOptionPane.showInputDialog(this, "Digite quantos litros você quer abastecer:");
+
+            int lit = Integer.parseInt(litros);
+
+            jtaQuadroMens.append("\n" + moto.abastecer(lit));
+        }
+
+    }//GEN-LAST:event_jrbAbastecerActionPerformed
+
+    private void jrbConsultarTanqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbConsultarTanqueActionPerformed
+        if (jrbCarro.isSelected()) {
+            if (carro == null) {
+
+                int tanque = Integer.parseInt(jtfTanque.getText());
+                int consumo = Integer.parseInt(jtfConsumo.getText());
+                int capacidade = Integer.parseInt(jtfCapacidade.getText());
+
+                carro = new Carro(consumo, capacidade, tanque);
+            }
+
+            jtaQuadroMens.append("\nO tanque está com " + carro.consultarTanque() + "L");
+
+        }
+
+        if (jrbMoto.isSelected()) {
+            if (moto == null) {
+
+                int tanque = Integer.parseInt(jtfTanque.getText());
+                int consumo = Integer.parseInt(jtfConsumo.getText());
+                int capacidade = Integer.parseInt(jtfCapacidade.getText());
+
+                moto = new Moto(consumo, capacidade, tanque);
+            }
+
+            jtaQuadroMens.append("\nO tanque está com " + moto.consultarTanque() + "L");
+
+        }
+    }//GEN-LAST:event_jrbConsultarTanqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,12 +393,12 @@ public class Teste extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton jrbAbastecer;
     private javax.swing.JButton jrbAndar;
     private javax.swing.JRadioButton jrbCarro;
     private javax.swing.JButton jrbConsultarTanque;
     private javax.swing.JRadioButton jrbMoto;
+    private javax.swing.JTextArea jtaQuadroMens;
     private javax.swing.JTextField jtfCapacidade;
     private javax.swing.JTextField jtfConsumo;
     private javax.swing.JTextField jtfTanque;

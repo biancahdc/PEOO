@@ -44,7 +44,7 @@ public class Carro implements IVeiculo {
         
         int qntdLitros = distancia/consumoLitro;
         
-        if(tanque - qntdLitros >= 0){
+        if(tanque - qntdLitros >= 0  && tanque != 0){
             tanque -= qntdLitros;
             return "O carro percorreu " + distancia + " km";
         }else{
@@ -58,7 +58,7 @@ public class Carro implements IVeiculo {
             tanque += litros;
             return "Você abasteceu o carro com " + litros + "L";
         }else{
-            return "Tanque cheio!!";
+            return "Impossível colocar essa quantidade de gasolina!";
         }
     }
 

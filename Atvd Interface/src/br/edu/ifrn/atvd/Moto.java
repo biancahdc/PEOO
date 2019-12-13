@@ -44,9 +44,9 @@ public class Moto implements IVeiculo{
     public String andar(int distancia) {
         int qntdLitros = distancia/consumoLitro;
         
-        if(tanque - qntdLitros >= 0){
+        if(tanque - qntdLitros >= 0 && tanque != 0){
             tanque -= qntdLitros;
-            return "O carro percorreu " + distancia + " km";
+            return "A moto percorreu " + distancia + " km";
         }else{
             return "Tu até pode ir, mas vai ficar no prego :/";
         }
@@ -56,9 +56,9 @@ public class Moto implements IVeiculo{
     public String abastecer(int litros) {
         if(tanque + litros <= capacidadeTotal){
             tanque += litros;
-            return "Você abasteceu o carro com " + litros + "L";
+            return "Você abasteceu a moto com " + litros + "L";
         }else{
-            return "Tanque cheio!!";
+            return "Impossível colocar essa quantidade de gasolina!";
         }
     }
 
